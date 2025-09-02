@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  artists-mvc:
+    image: avi17ak/artists-mvc:0.0.1.RELEASE
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - artists-db
+    networks:
+      - artists-network
+
+  # The value of 'DB_HOST' we reference in the MVC Dockerfile  
+  artists-db:
+    image: avi17ak/artists-db:0.0.1.RELEASE
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - artists-network
+      
+networks:
+  artists-network:
