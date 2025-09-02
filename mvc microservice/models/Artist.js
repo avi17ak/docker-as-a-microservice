@@ -1,4 +1,4 @@
-const db = require("../db/connect")
+const db = require("../database/connect")
 
 class Artist {
   constructor({artist_id, name, genre}) {
