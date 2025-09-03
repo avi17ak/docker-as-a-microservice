@@ -6,9 +6,12 @@ env:
 
 phases:
   pre_build:
-    commands:
-      - echo Logging in to Docker Hub...
-      - echo $SECRET_PASSWORD | docker login -u $SECRET_USERNAME --password-stdin
+  commands:
+    - echo "Checking Docker Hub credentials..."
+    - echo "Username is: $SECRET_USERNAME"
+    - echo "Password length: ${#SECRET_PASSWORD}"
+    - echo $SECRET_PASSWORD | docker login -u $SECRET_USERNAME --password-stdin
+
 
   build:
     commands:
