@@ -1,0 +1,22 @@
+version: 0.2
+env:
+  secrets-manager:
+    SECRET_USERNAME: "docker-login:username"
+    SECRET_PASSWORD: "docker-login:password"
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Dockerhub
+      - echo "$SECRET_PASSWORD" | docker login -u "$SECRET_USERNAME" --password-stdin
+
+  build:
+    commands:
+      - echo "Building Docker Image..."
+      - docker build -t avi17ak/artists-db:latest .
+  post_build:
+    commands:
+      - echo "Pushing Docker Image..."
+      - docker push avi17ak/artists-db:latest
+artifacts:
+  files:
+    - Dockerfile
