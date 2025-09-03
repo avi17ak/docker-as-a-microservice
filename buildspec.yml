@@ -12,12 +12,10 @@ phases:
       - echo "Username is: $SECRET_USERNAME"
       - echo "Password length: ${#SECRET_PASSWORD}"
       - echo $SECRET_PASSWORD | docker login -u $SECRET_USERNAME --password-stdin
-
   build:
     commands:
       - echo "Building Docker Image..."
       - docker build -t avi17ak/artists-db:latest .
-
   post_build:
     commands:
       - echo "Pushing Docker Image..."
