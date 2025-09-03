@@ -13,7 +13,7 @@ phases:
   build:
     commands:
       - echo "Building Docker Image..."
-      - docker build -t avi17ak/artists-db:latest -f mvc-microservice/Dockerfile .
+      - docker build -t avi17ak/artists-db:latest mvc-microservice
   post_build:
     commands:
       - echo "Pushing Docker Image..."
